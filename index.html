@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset = 'utf-8'>
+<html>
+  <head><title>Webcam AI</title></head>
+  <body>
+    <img id = "stream" src = "">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      $(function() {
+        let socket = io();
+        socket.on("data", data => {
+          $("#stream").attr("src", "data:image/png;base64," + data);
+        });
+      });
+    </script>
+  </body>
+</html>
